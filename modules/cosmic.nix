@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   inputs,
   pkgs,
   ...
@@ -12,10 +14,10 @@
   services = {
     # COSMIC Desktop Environment
     desktopManager.cosmic = {
-        enable = true;
-        xwayland.enable = true;
-      };
-      displayManager.cosmic-greeter.enable = true;
+      enable = true;
+      xwayland.enable = true;
+    };
+    displayManager.cosmic-greeter.enable = true;
 
     # Desktop services
     gnome.gnome-keyring.enable = true;
@@ -25,19 +27,28 @@
 
   # COSMIC-focused application packages
   environment.systemPackages = with pkgs; [
-    # Essential COSMIC utilities
+    # Extensions
     cosmic-ext-ctl
     cosmic-ext-tweaks
     cosmic-ext-calculator
     cosmic-ext-applet-caffeine
+    cosmic-ext-applet-weather
 
     (vivaldi.override {
-     commandLineArgs = [
-       "--password-store=gnome-libsecret"
-       "--ozone-platform=wayland"
-       "--enable-wayland-ime"
-       "--wayland-text-input-version=3"
-     ];
+      commandLineArgs = [
+        "--password-store=gnome-libsecret"
+        "--ozone-platform=wayland"
+        "--enable-wayland-ime"
+        "--wayland-text-input-version=3"
+      ];
+    })
+    (google-chrome.override {
+      commandLineArgs = [
+        "--password-store=gnome-libsecret"
+        "--ozone-platform=wayland"
+        "--enable-wayland-ime"
+        "--wayland-text-input-version=3"
+      ];
     })
 
     # Screenshot tools
@@ -55,7 +66,7 @@
     xdg-user-dirs-gtk
 
     # Theming
-    inputs.cutecosmic.packages.${pkgs.system}.default
+    inputs.cutecosmic.packages.${pkgs.stdenv.hostPlatform.system}.default
     bibata-cursors
     kdePackages.breeze
     kdePackages.breeze-gtk
@@ -113,7 +124,7 @@
 
     # Qt settings
     QT_QPA_PLATFORMTHEME = "cosmic";
-    #QT_WAYLAND_DECORATION = "adwaita";
+    QT_WAYLAND_DECORATION = "adwaita";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
 
     # Wayland

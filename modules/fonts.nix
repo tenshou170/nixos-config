@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
@@ -20,6 +22,8 @@
 
       # Development fonts
       nerd-fonts.meslo-lg
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
       source-code-pro
 
       # UI fonts

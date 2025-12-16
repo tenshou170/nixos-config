@@ -76,7 +76,7 @@
           update-props = {
             "session.suspend-timeout-seconds" = 0;
             "dither.method" = "wannamaker3";
-            "dither.noise" = 1;
+            "dither.noise" = 2;
           };
         };
       }
@@ -95,7 +95,7 @@
           update-props = {
             "session.suspend-timeout-seconds" = 0;
             "dither.method" = "wannamaker3";
-            "dither.noise" = 1;
+            "dither.noise" = 2;
           };
         };
       }

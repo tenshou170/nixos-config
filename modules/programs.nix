@@ -1,7 +1,9 @@
 {
-  inputs,
-  pkgs,
   aagl,
+  config,
+  inputs,
+  lib,
+  pkgs,
   sharedFonts,
   ...
 }:
@@ -22,8 +24,10 @@
     ntfs3g
     seatd
     libunity
+    libayatana-appindicator
     libappindicator-gtk2
     libappindicator-gtk3
+    wl-clipboard
 
     # Media & Graphics
     pavucontrol
@@ -33,6 +37,7 @@
     icoutils
     imagemagick
     krita
+    switcheroo
     webp-pixbuf-loader
     wpgtk
     xournalpp
@@ -42,7 +47,7 @@
     heimdall
 
     # Communication
-    (discord.override {
+    (discord-ptb.override {
       withEquicord = true;
       commandLineArgs = [
         "--ozone-platform=wayland"
@@ -54,6 +59,7 @@
 
     # Web browsers
     # vivaldi has different overrides for both COSMIC and Plasma6
+    # google-chrome has different overrides for both COSMIC and Plasma6 (Needed for Antigravity)
     vivaldi-ffmpeg-codecs
 
     # Gaming & Wine
@@ -61,6 +67,7 @@
       removeWarningPopup = true;
     })
     heroic
+    lutris
     mangohud
     goverlay
     protonplus
@@ -73,14 +80,14 @@
     wineWowPackages.fonts
     wineWowPackages.stagingFull
     winetricks
-    
+
     # Emulations
     dosbox-x
     (_86Box-with-roms.override {
       unfreeEnableDiscord = true;
       unfreeEnableRoms = true;
     })
-    
+
     # Nemo file manager and extensions
     file-roller
     nemo
@@ -89,7 +96,7 @@
     nemo-preview
     nemo-seahorse
     nemo-fileroller
-    
+
     # Other programs
     gnome-boxes
     proton-authenticator
@@ -103,7 +110,6 @@
     p7zip
     unzip
     unrar
-    # arrpc
     equicord
     freetype
     varia
@@ -149,20 +155,23 @@
     # Steam configuration
     steam = {
       enable = true;
-      extraPackages = with pkgs; [
-        xorg.libXcursor
-        xorg.libXi
-        xorg.libXinerama
-        xorg.libXcomposite
-        libGL
-        vulkan-loader
-        libpulseaudio
-        alsa-lib
-        libkrb5
-        systemd
-        wayland
-        libxkbcommon
-      ] ++ sharedFonts;
+      extraPackages =
+        with pkgs;
+        [
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXcomposite
+          libGL
+          vulkan-loader
+          libpulseaudio
+          alsa-lib
+          libkrb5
+          systemd
+          wayland
+          libxkbcommon
+        ]
+        ++ sharedFonts;
       remotePlay.openFirewall = true;
       gamescopeSession.enable = true;
       protontricks.enable = true;

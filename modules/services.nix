@@ -1,5 +1,6 @@
-# System services configuration
 {
+  config,
+  lib,
   pkgs,
   ...
 }:

@@ -125,7 +125,7 @@
   system = {
     etc.overlay = {
       enable = true;
-      mutable = false;
+      mutable = true;
     };
     nixos-init.enable = true;
     stateVersion = "26.05";

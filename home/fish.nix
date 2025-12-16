@@ -9,9 +9,9 @@
     # Useful shell aliases for common tasks
     shellAliases = {
       free = "free -m";
-      nix-switch = "sudo nixos-rebuild switch";
-      nix-upgrade = "sudo nixos-rebuild switch --upgrade";
-      nix-clean = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system && sudo nix-collect-garbage && sudo nixos-rebuild boot";
+      nix-switch = "sudo nixos-rebuild switch --flake /etc/nixos#X1-Yoga-2nd";
+      nix-upgrade = "sudo nix flake update --flake /etc/nixos#X1-Yoga-2nd && sudo nixos-rebuild switch --flake /etc/nixos#X1-Yoga-2nd";
+      nix-clean = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system && sudo nix-collect-garbage && sudo nixos-rebuild boot --flake /etc/nixos#X1-Yoga-2nd";
     };
     # Custom Fish functions
     functions = {

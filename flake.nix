@@ -3,8 +3,7 @@
 
   inputs = {
     # Repositories
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
     flake-utils.url = "github:numtide/flake-utils";
@@ -31,24 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    xwayland-satellite = {
-      url = "github:Supreeeme/xwayland-satellite";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dgop = {
-      url = "github:AvengeMedia/dgop";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dankMaterialShell = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.dgop.follows = "dgop";
-    };
-
-    vicinae.url = "github:vicinaehq/vicinae";
-
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,12 +46,9 @@
   outputs =
     {
       self,
-      determinate,
       nixpkgs,
       home-manager,
       nix-cachyos-kernel,
-      dankMaterialShell,
-      vicinae,
       aagl,
       ...
     }@inputs:
@@ -102,7 +80,6 @@
 
         modules = [
           ./hosts/default.nix
-          determinate.nixosModules.default
           aagl.nixosModules.default
           inputs.nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
           inputs.home-manager.nixosModules.home-manager
@@ -117,22 +94,8 @@
             };
           }
 
-          # Home Manager configuration
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "bak";
-              users.tenshou170 = import ./home/default.nix;
-              extraSpecialArgs = {
-                inherit
-                  inputs
-                  pkgsMaster
-                  ;
-                inherit (inputs) vicinae;
-              };
-            };
-          }
+          # Home Manager configuration module
+          ./home/manager.nix
         ];
 
         # Pass inputs through specialArgs

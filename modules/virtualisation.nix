@@ -20,7 +20,11 @@
 
     spiceUSBRedirection.enable = true;
     containers.enable = true;
-    waydroid.enable = true;
+
+    waydroid = {
+      enable = true;
+      package = pkgs.waydroid-nftables;
+    };
 
     # Podman container runtime
     podman = {
@@ -47,17 +51,11 @@
 
     # VM guest management tools
     libguestfs-with-appliance
-    python312Packages.guestfs
-    python313Packages.guestfs
+    python3Packages.guestfs
 
     # Container management tools
     boxbuddy
     distrobox
-
-    # Android emulation tools
-    waydroid
-    waydroid-helper
-    wl-clipboard
 
     # Virtualization utilities
     swtpm

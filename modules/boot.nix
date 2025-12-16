@@ -73,6 +73,7 @@
     # Extra modprobe config
     extraModprobeConfig = ''
       options kvm_intel nested=1
+      options kvm ignore_msrs=1
     '';
 
     # Boot splash

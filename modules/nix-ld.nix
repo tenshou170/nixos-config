@@ -1,12 +1,14 @@
 {
-  pkgs,
+  config,
   inputs,
+  lib,
+  pkgs,
   ...
 }:
 
 {
   # Enable nix-alien
-  environment.systemPackages = with inputs.nix-alien.packages."${pkgs.system}"; [
+  environment.systemPackages = with inputs.nix-alien.packages."${pkgs.stdenv.hostPlatform.system}"; [
     nix-alien
   ];
 

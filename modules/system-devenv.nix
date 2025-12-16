@@ -1,6 +1,9 @@
 {
-  pkgs,
+  config,
   inputs,
+  lib,
+  pkgs,
+
   ...
 }:
 
@@ -9,7 +12,7 @@
   # Development environment configuration
   environment.systemPackages = with pkgs; [
     # Rust development tools
-    (inputs.fenix.packages.${pkgs.system}.complete.withComponents [
+    (inputs.fenix.packages.${pkgs.stdenv.hostPlatform.system}.complete.withComponents [
       "cargo"
       "clippy"
       "rust-src"
@@ -19,7 +22,7 @@
     rust-analyzer
 
     # Python with development packages
-    (python312.withPackages (
+    (python3.withPackages (
       ps: with ps; [
         pip
         black
@@ -55,13 +58,11 @@
     jetbrains.pycharm-community-bin
     (vscode.override {
       commandLineArgs = [
-        "--password-store=kwallet6"
         "--ozone-platform=wayland"
       ];
     }).fhs
     (antigravity.override {
       commandLineArgs = [
-        "--password-store=kwallet6"
         "--ozone-platform=wayland"
       ];
     }).fhs
@@ -91,7 +92,7 @@
     yaml-language-server
 
     # JavaScript/Node.js development
-    nodejs_22
+    nodejs_24
     pnpm
   ];
 
@@ -113,16 +114,24 @@
 
   # Set development environment variables
   environment.sessionVariables = {
+    # Rust
     RUST_BACKTRACE = "1";
     CARGO_HOME = "$HOME/.cargo";
-    CARGO_TARGET_DIR = "/tmp/cargo-target";
+    # Move target dir to user cache to avoid /tmp permission clashes and keep it persistent across reboots
+    CARGO_TARGET_DIR = "$HOME/.cache/cargo-target";
+
+    # .NET
     DOTNET_CLI_TELEMETRY_OPTOUT = "1";
     DOTNET_ROOT = "${pkgs.dotnet-sdk}";
+
+    # Java
     JAVA_HOME = "${pkgs.jdk}";
-    CC = "${pkgs.gcc}/bin/gcc";
-    CXX = "${pkgs.gcc}/bin/g++";
-    PKG_CONFIG_PATH = "${pkgs.pkg-config}/lib/pkgconfig";
+
+    # C/C++ - Use 'lib.getExe' for safer path resolution on Unstable
+    CC = lib.getExe' pkgs.gcc "gcc";
+    CXX = lib.getExe' pkgs.gcc "g++";
+
+    # Node
     NODE_OPTIONS = "--max-old-space-size=4096";
-    PYTHONPATH = "$HOME/.local/lib/python3.12/site-packages";
   };
 }

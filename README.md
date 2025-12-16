@@ -11,7 +11,7 @@ Personal NixOS configuration for ThinkPad X1 Yoga 2nd Gen using flakes and modul
 - **CPU**: Intel Core i5-7300U
 - **RAM**: 8GB LPDDR3
 - **Storage**: 512GB NVMe SSD
-- **OS**: NixOS Unstable (25.11)
+- **NixOS Version**: Unstable (26.05)
 
 ## Quick Overview
 
@@ -78,7 +78,7 @@ nix.gc.options = "--delete-older-than 14d";  # Change as needed
 
 ```bash
 # Update
-nix flake update && sudo nixos-rebuild switch --flake .
+sudo nix flake update && sudo nixos-rebuild switch --flake .
 
 # Clean old generations (automatic weekly, or manual)
 sudo nix-collect-garbage --delete-older-than 7d
@@ -98,7 +98,6 @@ sudo nixos-rebuild test --flake .
 
 - cache.nixos.org (official)
 - nix-community.cachix.org
-- Chaotic Nyx (CachyOS kernel)
 - an-anime-team.cachix.org
 
 ## License
@@ -107,7 +106,8 @@ MIT - See [LICENSE](LICENSE)
 
 ## Acknowledgments
 
-Chaotic Nyx • NixOS Community
+NixOS Community
+The Anime Team
 
 ---
 
