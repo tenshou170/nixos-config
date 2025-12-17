@@ -92,6 +92,7 @@
   nix.settings = {
     auto-optimise-store = true;
     builders-use-substitutes = true;
+    download-buffer-size = 524288000;
     max-jobs = 4;
     cores = 4;
     experimental-features = [
@@ -104,6 +105,7 @@
     ];
     # Binary cache sources
     substituters = [
+      "https://attic.xuyh0120.win/lantian"
       "https://nix-community.cachix.org"
       "https://vicinae.cachix.org"
       "https://ezkea.cachix.org"
@@ -111,6 +113,7 @@
     ];
     # Public keys for binary caches
     trusted-public-keys = [
+      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="

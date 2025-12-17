@@ -48,7 +48,7 @@
     };
 
     # Hibernation & Power Management
-    resumeDevice = "/dev/disk/by-uuid/14b6e8da-d76f-4d6d-af2d-199ef907585c";
+    resumeDevice = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
 
     # initrd configuration
     initrd = {
