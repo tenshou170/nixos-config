@@ -30,7 +30,6 @@
     # Device management
     accounts-daemon.enable = true;
     envfs.enable = true;
-    userborn.enable = true;
 
     # Geoclue2 configuration
     geoclue2 = {

@@ -70,18 +70,21 @@
     packages = sharedFonts;
   };
 
-  # zRAM swap configuration
-  zramSwap = {
+  # ZRAM configuration
+  services.zram-generator = {
     enable = true;
-    priority = 100;
-    algorithm = "zstd";
-    swapDevices = 1;
-    memoryPercent = 75;
+    settings = {
+      zram0 = {
+        zram-size = "ram";
+        compression-algorithm = "zstd";
+        swap-priority = 100;
+      };
+    };
   };
 
   # System limits and optimization
   systemd = {
-    user.extraConfig = "DefaultLimitNOFILE=524288";
+    user.extraConfig = "DefaultLimitNOFILE=1048576";
     services.nix-daemon.environment.TMPDIR = "/var/tmp";
   };
 
@@ -124,13 +127,6 @@
   # Allow unfree packages globally
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
 
-  # System configuration
-  system = {
-    etc.overlay = {
-      enable = true;
-      mutable = true;
-    };
-    nixos-init.enable = true;
-    stateVersion = "26.05";
-  };
+  # System State Version
+  system.stateVersion = "26.05";
 }

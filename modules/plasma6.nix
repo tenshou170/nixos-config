@@ -6,7 +6,7 @@
 }:
 
 {
-  # Plasma 6 patch to correctly handle XDG_DATA_DIRS in wrapped applications
+  # Fix Plasma 6 lagging
   nixpkgs.overlays = lib.singleton (
     final: prev: {
       kdePackages = prev.kdePackages // {

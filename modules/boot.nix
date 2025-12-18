@@ -1,11 +1,17 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
 }:
 
 {
+  # Overlay for nix-cachyos-kernel
+  nixpkgs.overlays = [
+    inputs.nix-cachyos-kernel.overlays.default
+  ];
+
   # Boot configuration
   boot = {
     loader = {
@@ -19,7 +25,7 @@
       efi.canTouchEfiVariables = true;
     };
 
-    # Kernel configuration, using CachyOS kernel
+    # Kernel configuration, using Xanmod kernel
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
     # Essential kernel modules loaded at boot
@@ -35,7 +41,7 @@
       "nowatchdog"
       "quiet"
       "splash"
-      "loglevel=3"
+      "mitigations=auto"
       "resume_offset=533760"
       "psi=1"
       "intel_iommu=on"

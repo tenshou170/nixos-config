@@ -84,18 +84,28 @@
           inputs.nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
           inputs.home-manager.nixosModules.home-manager
 
-          # Configure nixpkgs with overlays
+          # Configure nixpkgs
           {
             nixpkgs = {
               config = nixpkgsConfig;
-              overlays = [
-                nix-cachyos-kernel.overlays.default
-              ];
             };
           }
 
-          # Home Manager configuration module
-          ./home/manager.nix
+          # Home Manager configuration
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "bak";
+              users.tenshou170 = import ./home/default.nix;
+              extraSpecialArgs = {
+                inherit
+                  inputs
+                  pkgsMaster
+                  ;
+              };
+            };
+          }
         ];
 
         # Pass inputs through specialArgs
