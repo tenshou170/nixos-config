@@ -26,7 +26,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@"
@@ -40,7 +40,7 @@
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@nix"
@@ -54,7 +54,7 @@
   };
 
   fileSystems."/root" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@root"
@@ -68,7 +68,7 @@
   };
 
   fileSystems."/srv" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@srv"
@@ -82,7 +82,7 @@
   };
 
   fileSystems."/swap" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@swap"
@@ -96,7 +96,7 @@
   };
 
   fileSystems."/var/cache" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@cache"
@@ -110,7 +110,7 @@
   };
 
   fileSystems."/var/lib/machines" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@machines"
@@ -124,7 +124,7 @@
   };
 
   fileSystems."/var/lib/portables" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@portables"
@@ -138,7 +138,7 @@
   };
 
   fileSystems."/var/log" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@log"
@@ -152,7 +152,7 @@
   };
 
   fileSystems."/var/tmp" = {
-    device = "/dev/disk/by-uuid/54f63cf7-494a-43d6-9225-d76f89e4acb7";
+    device = "/dev/disk/by-uuid/84a6325c-7323-422f-856c-bb74f670e9a7";
     fsType = "btrfs";
     options = [
       "subvol=@tmp"
@@ -166,7 +166,7 @@
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/dff01f9c-2706-4742-b836-ef4afb24d97d";
+    device = "/dev/disk/by-uuid/3d461431-b3d2-40ed-bd12-248afbc16593";
     fsType = "btrfs";
     options = [
       "noatime"
@@ -192,7 +192,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/CA43-EDE2";
+    device = "/dev/disk/by-uuid/BBD8-9E68";
     fsType = "vfat";
     options = [
       "fmask=0077"

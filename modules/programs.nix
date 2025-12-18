@@ -49,11 +49,6 @@
     # Communication
     (discord-ptb.override {
       withEquicord = true;
-      commandLineArgs = [
-        "--ozone-platform=wayland"
-        "--enable-wayland-ime"
-        "--wayland-text-input-version=3"
-      ];
     })
     zapzap
 
@@ -118,6 +113,7 @@
   # Environment variables
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     ELECTRON_ENABLE_HARDWARE_ACCELERATION = "1";
   };
 

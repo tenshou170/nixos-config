@@ -95,7 +95,7 @@
   nix.settings = {
     auto-optimise-store = true;
     builders-use-substitutes = true;
-    download-buffer-size = 524288000;
+    download-buffer-size = 1073700000;
     max-jobs = 4;
     cores = 4;
     experimental-features = [

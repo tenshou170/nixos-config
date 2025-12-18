@@ -22,13 +22,19 @@
     createDirectories = true;
   };
 
-  # Git configuration
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
-    settings.user = {
-      name = "Tenshou Zmeyev";
-      email = "tenshou170@gmail.com";
+  # Git + GitHub CLI configuration
+  programs = {
+    git = {
+      enable = true;
+      lfs.enable = true;
+      settings.user = {
+        name = "Tenshou Zmeyev";
+        email = "tenshou170@gmail.com";
+      };
+    };
+    gh = {
+      enable = true;
+      gitCredentialHelper.enable = true;
     };
   };
 }

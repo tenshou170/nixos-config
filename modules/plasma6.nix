@@ -162,7 +162,6 @@
   # KDE-specific environment variables
   environment.sessionVariables = {
     GTK_USE_PORTAL = "1";
-    XMODIFIERS = "@im=fcitx";
   };
 
   # Plasma-specific options

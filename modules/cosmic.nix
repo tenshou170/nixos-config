@@ -131,7 +131,6 @@
     GDK_SCALE = "1.25";
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_WEBRENDER = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
 
     # Cursor theme

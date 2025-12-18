@@ -13,23 +13,21 @@
   powerManagement.enable = true;
 
   services = {
-    # Hardware and system optimization
+    # Crucial services
     fstrim.enable = true;
     btrfs.autoScrub.enable = true;
     fwupd.enable = true;
     irqbalance.enable = true;
     thermald.enable = true;
     dbus.implementation = "broker";
+    accounts-daemon.enable = true;
+    envfs.enable = true;
 
     # UDisk configuration
     udisks2 = {
       enable = true;
       mountOnMedia = true;
     };
-
-    # Device management
-    accounts-daemon.enable = true;
-    envfs.enable = true;
 
     # Geoclue2 configuration
     geoclue2 = {
