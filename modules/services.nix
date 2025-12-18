@@ -61,7 +61,7 @@
     # seatd configuration
     seatd = {
       enable = true;
-      user = "thshafi170";
+      user = "tenshou170";
     };
 
     # Desktop services

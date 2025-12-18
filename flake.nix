@@ -100,6 +100,7 @@
               users.tenshou170 = import ./home/default.nix;
               extraSpecialArgs = {
                 inherit
+                  aagl
                   inputs
                   pkgsMaster
                   ;
@@ -112,6 +113,7 @@
         specialArgs = {
           inherit
             self
+            aagl
             inputs
             pkgsMaster
             ;
