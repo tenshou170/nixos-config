@@ -25,7 +25,7 @@
       efi.canTouchEfiVariables = true;
     };
 
-    # Kernel configuration, using Xanmod kernel
+    # Kernel configuration, using CachyOS kernel
     kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
     # Essential kernel modules loaded at boot
