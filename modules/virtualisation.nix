@@ -53,11 +53,8 @@
     libguestfs-with-appliance
     python3Packages.guestfs
 
-    # Container management tools
-    boxbuddy
+    # Tools
     distrobox
-
-    # Virtualization utilities
     swtpm
   ];
 }
